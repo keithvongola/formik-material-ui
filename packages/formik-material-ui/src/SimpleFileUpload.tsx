@@ -8,6 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 export interface SimpleFileUploadProps extends FieldProps {
   label: string;
   disabled?: boolean;
+  accept?: string;
   InputProps?: Omit<InputProps, 'name' | 'type' | 'label'>;
   InputLabelProps?: InputLabelProps;
   FormControlProps?: FormControlProps;
@@ -18,6 +19,7 @@ export const SimpleFileUpload = ({
   form: { isSubmitting, touched, errors, setFieldValue },
   label,
   disabled = false,
+  accept,
   InputProps: inputProps,
   InputLabelProps: inputLabelProps,
   FormControlProps: formControlProps,
@@ -36,6 +38,7 @@ export const SimpleFileUpload = ({
         inputProps={{
           type: 'file',
           disabled: disabled || isSubmitting,
+          accept,
           name: field.name,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange: (event: React.ChangeEvent<any>) => {
